@@ -5,6 +5,7 @@ pipeline {
         IMAGE_NAME = "flask-cicd-app"
         IMAGE_TAG = "latest"
         CLUSTER_NAME = "flask-cluster"
+        KUBECONFIG = "/home/jenkins/.kube/config"
     }
 
     stages {
@@ -62,6 +63,18 @@ pipeline {
                 '''
             }
         }
+
+        stage('Check Kubernetes Access') {
+            steps {
+                sh '''
+                echo "KUBECONFIG=$KUBECONFIG"
+                whoami
+                ls -l /home/jenkins/.kube
+                kubectl config current-context
+                kubectl get nodes
+                '''
+            }
+       }        
 
         stage('Deploy to Kubernetes') {
             steps {
