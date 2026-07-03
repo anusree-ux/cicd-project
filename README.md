@@ -1,6 +1,6 @@
 # CI/CD Pipeline for a Flask Application
 
-A DevOps project demonstrating a complete CI/CD pipeline for a containerized Flask application using Jenkins, Docker, and Kubernetes (Kind).
+This project demonstrates an end-to-end CI/CD pipeline for a Flask web application using Jenkins, Docker, and Kubernetes (Kind). Every push to the GitHub repository automatically triggers a Jenkins pipeline via GitHub Webhooks, which runs tests, builds a Docker image, and deploys the application to a Kubernetes cluster.
 
 ## Technologies
 
@@ -16,12 +16,13 @@ A DevOps project demonstrating a complete CI/CD pipeline for a containerized Fla
 
 1. Push code to GitHub
 2. Jenkins is triggered automatically via GitHub Webhook
-3. Install dependencies
-4. Run unit tests
-5. Build Docker image
-6. Load image into Kind cluster
-7. Deploy to Kubernetes
-8. Verify deployment
+3. Jenkins checks out the latest code.
+4. Dependencies are installed.
+5. Unit tests are executed using Pytest.
+6. A Docker image is built.
+7. The image is loaded into the Kind cluster.
+8. Deployed to Kubernetes
+9. Jenkins verifies the deployment.
 
 ## Run Locally
 
@@ -37,8 +38,3 @@ python app.py
 ```bash
 pytest -v
 ```
-
-## Author
-
-**Anusree Manoj**
-
